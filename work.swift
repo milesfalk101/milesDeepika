@@ -6,9 +6,9 @@ var arr:[String] = [];
 * Description: Function accepts a singular string as its argumet. Array elements are read and the matching one is removed. 
 * Author(s): Deepika & Miles
 * Parametere(s): String -> Element to remove
-* Output(s): -> String -> Return elmenent removed
+* Output(s): -> String:Int -> Return elmenent removed and length of array in dictionary format
 **************************************************************/
-func RemoveTag(target:String) -> String {
+func RemoveTag(target:String) -> Dictionary<String, Int> {
 
     //Initilize counter at 0
     var counter = 0;
@@ -25,14 +25,13 @@ func RemoveTag(target:String) -> String {
                 //Remove array target
                 arr.remove(at: counter);
             }
+            counter = counter + 1;
         }
 
-        //Update counter
-        counter = counter + 1;
     }
-
     //Return removed target
-    return target;
+    var returnMethode:[String: Int] = [target:arr.count]
+    return returnMethode;
 }
 
 /*************************************************************
@@ -42,7 +41,7 @@ func RemoveTag(target:String) -> String {
 * Parameter(s): String -> Element to update; String -> Value to apply
 * Output(s): Array<String> -> Return target string and change value
 *************************************************************/
-func UpdateTag(target, change:String) -> Array<String> {
+func UpdateTag(target:String, change:String) -> Array<String> {
 
     //Initilize counter to 0
     var counter = 0;
