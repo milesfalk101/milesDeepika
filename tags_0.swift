@@ -5,10 +5,10 @@ var arr:[String] = [];
 * Name: RemoveTag
 * Description: Function accepts a singular string as its argumet. Array elements are read and the matching one is removed. 
 * Author(s): Deepika & Miles
-* Parametere(s): String -> Element to remove
-* Output(s): -> String:Int -> Return elmenent removed and length of array in dictionary format
+* Parametere(s): String -> Element to remove; Bool -> Return length of array
+* Output(s): -> Int -> Return length of array or 0
 **************************************************************/
-func RemoveTag(target:String) -> Dictionary<String, Int> {
+func RemoveTag(target:String, returnLength:Bool = false) -> Int {
 
     //Initilize counter at 0
     var counter = 0;
@@ -29,19 +29,24 @@ func RemoveTag(target:String) -> Dictionary<String, Int> {
         }
 
     }
-    //Return removed target
-    var returnMethode:[String: Int] = [target:arr.count]
-    return returnMethode;
+
+    //Return array count
+    if returnLength == true {
+        return arr.count;
+    }
+    //Return 0
+    return 0;
 }
 
 /*************************************************************
 * Name: UpdateTag
 * Description: Fuction accepts two string values; Target element and change value. Array elments are read and the matching one changes values.
+* Note(s): This function keeps current indexing, simply changing array values
 * Author(s): Deepika & Miles
-* Parameter(s): String -> Element to update; String -> Value to apply
-* Output(s): Array<String> -> Return target string and change value
+* Parameter(s): String -> Element to update; String -> Value to update; Bool -> Return length of array
+* Output(s): Int -> Return length of array or 0
 *************************************************************/
-func UpdateTag(target:String, change:String) -> Array<String> {
+func UpdateTag(from:String, to:String, returnLength:Bool = false) -> Int {
 
     //Initilize counter to 0
     var counter = 0;
@@ -53,10 +58,10 @@ func UpdateTag(target:String, change:String) -> Array<String> {
         if tag != nil {
 
             //Check if current element is target
-            if tag == target {
+            if tag == from {
 
                 //Change target value from current to change value
-                arr[counter] = change;
+                arr[counter] = to;
             }
         }
 
@@ -64,19 +69,27 @@ func UpdateTag(target:String, change:String) -> Array<String> {
         counter = counter + 1;
     }
 
-    //Return target and change value
-    return [target, change]
+    //Return array length
+    if returnLength == true {
+        return arr.count;
+    }
+
+    //Return 0
+    return 0;
 }
 
 /*************************************************************
 * Name: AddTag
 * Description: Fuction accepts a new string value. It adds a new tag to the array
 * Author(s): Deepika & Miles
-* Parameter(s): String -> Element to add to array
+* Parameter(s): String -> Element to append to array
 * Output(s): Int -> Return array length
 *************************************************************/
-
-func AddTag(item:String) -> Int {
-    arr.append(item);
+func AddTag(target:String) -> Int {
+    
+    //Add item to tag array
+    arr.append(target);
+    
+    //Return array length
     return arr.count;
 }
